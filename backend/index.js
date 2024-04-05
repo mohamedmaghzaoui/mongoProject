@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("/task", taskRouter); 
+app.use("/tasks", taskRouter); 
 
 mongoose.connect("mongodb+srv://mohamedmaghzaoui53:medSym@cluster0.nxzio5l.mongodb.net/")
     .then(() => {

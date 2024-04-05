@@ -8,9 +8,9 @@ const TaskSchema=new mongoose.Schema({
         type:Date,
         required:true,
     },
-    category:{
+    description:{
         type:String,
-        required:true
+        required:false
     },
     username:{
         type:String,

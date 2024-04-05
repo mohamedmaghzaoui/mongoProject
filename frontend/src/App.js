@@ -1,13 +1,19 @@
 import React from "react";
-import MyForm from "./MyForm/MyForm"; 
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
+import MyForm from "./MyForm/MyForm";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>My to list </h1>
-      </header>
-      <MyForm /> 
+      <div class="alert alert-success my-2 w-75 offset-1" role="alert">
+  see my tasks
+</div>
+      <Router>
+        <Routes>
+        <Route path="/" element={<MyForm />} />
+        </Routes>
+       
+      </Router>
     </div>
   );
 }

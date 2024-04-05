@@ -6,10 +6,10 @@ const Task = require("../models/task");
 mongoose.connect("mongodb+srv://mohamedmaghzaoui53:medSym@cluster0.nxzio5l.mongodb.net/");
 
 // Create a task
-taskRouter.post("/addTask", async (req, res) => {
-    const { title, date, category, username } = req.body; // Assuming you pass these fields in the request body
+taskRouter.post("/", async (req, res) => {
+    const { title, date, description, username } = req.body; // Assuming you pass these fields in the request body
     try {
-        const task = new Task({ title, date, category, username });
+        const task = new Task({ title, date, description, username });
         await task.save();
         res.send("Task saved successfully");
     } catch (err) {
@@ -19,7 +19,7 @@ taskRouter.post("/addTask", async (req, res) => {
 });
 
 // Read all tasks
-taskRouter.get("/readAll", async (req, res) => {
+taskRouter.get("/", async (req, res) => {
     try {
         const tasks = await Task.find();
         res.json(tasks);
@@ -30,7 +30,7 @@ taskRouter.get("/readAll", async (req, res) => {
 });
 
 // Read a single task by ID
-taskRouter.get("/read/:id", async (req, res) => {
+taskRouter.get("/:id", async (req, res) => {
     const { id } = req.params;
     try {
         const task = await Task.findById(id);
@@ -45,7 +45,7 @@ taskRouter.get("/read/:id", async (req, res) => {
 });
 
 // Update a task by ID
-taskRouter.put("/update/:id", async (req, res) => {
+taskRouter.put("/:id", async (req, res) => {
     const { id } = req.params;
     const updateFields = req.body; // Assuming you pass fields to update in the request body
     try {
@@ -62,7 +62,7 @@ taskRouter.put("/update/:id", async (req, res) => {
 
 // Delete a task by ID
 
-taskRouter.delete("/delete/:id", async (req, res) => {
+taskRouter.delete("/:id", async (req, res) => {
     const { id } = req.params;
     try {
         const deletedTask = await Task.findByIdAndDelete(id);
