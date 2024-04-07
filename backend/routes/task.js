@@ -6,9 +6,9 @@ const Task = require("../models/task");
 
 // Create a task
 taskRouter.post("/", async (req, res) => {
-    const { title, date, description, username } = req.body; 
+    const { title, date, description, username,parentTask } = req.body; 
     try {
-        const task = new Task({ title, date, description, username });
+        const task = new Task({ title, date, description, username,parentTask });
         await task.save();
         res.send("Task saved successfully");
     } catch (err) {
@@ -74,5 +74,17 @@ taskRouter.delete("/:id", async (req, res) => {
         res.status(500).send("Error deleting task");
     }
 });
+// Read tasks by username
+taskRouter.get("/username/:username", async (req, res) => {
+    const { username } = req.params;
+    try {
+        const tasks = await Task.find({ username: username });
+        res.json(tasks);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error fetching tasks by username");
+    }
+});
+
 
 module.exports = taskRouter;

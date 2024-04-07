@@ -40,17 +40,37 @@ export const Home = () => {
             console.error("Error fetching data:", error);
         }
     };
+    //fetch task by username
+    const fetchTaksByUsername=async(username)=>{
+        try{
+            const response = await axios.get(`${url}/username/${username}`);
+            setTasks(response.data)
+
+        }catch(err){
+
+        }
+    }
     useEffect(() => {
         fetchTasks(); // Call fetchTasks function when component mounts
     }, []); // Empty dependency array to ensure it only runs once
+    const uniqueUsernames = [...new Set(tasks.map(task => task.username))];
 
     return (
         <div>
            <div class="alert alert-success my-2 w-75 offset-1" role="alert">
-            see all your tasks
+            see  your tasks
            </div>
            {/*button to add taks and show the add pop up */}
-           <button onClick={()=>{setShowAddForm(true)}} className="btn btn-lg btn-info offset-5">add a new task</button>
+           <button onClick={()=>fetchTasks()} className="btn btn-lg btn-primary mx-5">See all tasks</button>
+           <button onClick={()=>{setShowAddForm(true)}} className="btn btn-lg btn-info offset-3">add a new task</button>
+    
+
+           <select className="btn btn-success btn-lg offset-2" onChange={(e) => fetchTaksByUsername(e.target.value)}>
+  <option selected>find task by username</option>
+  {uniqueUsernames.map((username) => (
+    <option key={username}>{username}</option>
+  ))}
+</select>
           {/* add taks component*/}
           {showAddForm && <AddTaks fetchTasks={fetchTasks} setShowAddForm={setShowAddForm}/>}
           {/* taks details component*/}
@@ -86,9 +106,7 @@ export const Home = () => {
                     }}  className="btn btn-warning mx-2">modify</button>
                     <button onClick={()=>deleteTask(task._id)} className="btn btn-danger">delete</button>
                 </td>
-               
             </tr>
-            
         )
     })}
   </tbody>
