@@ -46,3 +46,5 @@ Architecture de l'application :
 Backend (Express.js) : Express.js est utilisé pour créer le serveur HTTP qui gère les requêtes et les réponses de l'API. Les routes sont définies pour chaque point de terminaison de l'API (CRUD) pour effectuer des opérations sur les tâches. Mongoose est utilisé pour interagir avec la base de données MongoDB Atlas.
 
 Frontend (React.js) : React.js est utilisé pour créer l'interface utilisateur de l'application. Les composants React sont utilisés pour afficher les tâches, ajouter de nouvelles tâches, afficher les détails des tâches individuelles et modifier ou supprimer des tâches existantes. Axios est utilisé pour effectuer des requêtes HTTP vers l'API Express.js.
+
+Lien de l'application : https://mongoproject.netlify.app/
