@@ -4,7 +4,9 @@ Description de l'application CRUD :
 Notre application permet aux utilisateurs de gérer des tâches. Voici ce que les utilisateurs peuvent faire :
 
 Créer une tâche : Les utilisateurs peuvent ajouter une nouvelle tâche avec un titre, une date, une description et leur nom d'utilisateur.
+
 Voir toutes les tâches : Les utilisateurs peuvent voir toutes les tâches existantes avec leurs détails.
+
 Voir une tâche individuelle : Les utilisateurs peuvent voir les détails d'une tâche spécifique en sélectionnant son identifiant.
 Mettre à jour une tâche : Les utilisateurs peuvent modifier les détails d'une tâche existante.
 Supprimer une tâche : Les utilisateurs peuvent supprimer une tâche existante.
