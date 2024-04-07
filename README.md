@@ -49,4 +49,7 @@ Backend (Express.js) : Express.js est utilisé pour créer le serveur HTTP qui g
 
 Frontend (React.js) : React.js est utilisé pour créer l'interface utilisateur de l'application. Les composants React sont utilisés pour afficher les tâches, ajouter de nouvelles tâches, afficher les détails des tâches individuelles et modifier ou supprimer des tâches existantes. Axios est utilisé pour effectuer des requêtes HTTP vers l'API Express.js.
 
+membres de l’équipe :
+Mohamed Maghzaoui et Ramla Argui 
+
 
