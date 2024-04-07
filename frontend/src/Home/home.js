@@ -53,7 +53,8 @@ export const Home = () => {
     useEffect(() => {
         fetchTasks(); // Call fetchTasks function when component mounts
     }, []); // Empty dependency array to ensure it only runs once
-    const uniqueUsernames = [...new Set(tasks.map(task => task.username))];
+    const uniqueUsernames = tasks !== null ? [...new Set(tasks.map(task => task.username))] : [];
+
 
     return (
         <div>
@@ -67,7 +68,7 @@ export const Home = () => {
 
            <select className="btn btn-success btn-lg offset-2" onChange={(e) => fetchTaksByUsername(e.target.value)}>
   <option selected>find task by username</option>
-  {uniqueUsernames.map((username) => (
+  {uniqueUsernames !=null && uniqueUsernames.map((username) => (
     <option key={username}>{username}</option>
   ))}
 </select>
@@ -89,7 +90,7 @@ export const Home = () => {
     </tr>
   </thead>
   <tbody>
-    {tasks&& tasks.map((task)=>{
+    {tasks !=null&& tasks.map((task)=>{
         return(
             <tr key={task.id}>
                 <td>{task.title}</td>
