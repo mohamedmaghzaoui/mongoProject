@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require('dotenv').config()
+const databaseUrl=process.env.DATABASE_URL
 const taskRouter = require("./routes/task");
 
 const app = express();
@@ -9,9 +11,9 @@ app.use(express.json());
 app.use(cors());
 app.use("/tasks", taskRouter); 
 
-mongoose.connect("mongodb+srv://mohamedmaghzaoui53:medSym@cluster0.nxzio5l.mongodb.net/")
+mongoose.connect(databaseUrl)
     .then(() => {
-        app.listen(3000, () => {
+        app.listen(3001, () => {
             console.log("server is running");
         });
     })

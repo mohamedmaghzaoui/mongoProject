@@ -1,13 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
+
 const taskRouter = express.Router();
 const Task = require("../models/task");
 
-mongoose.connect("mongodb+srv://mohamedmaghzaoui53:medSym@cluster0.nxzio5l.mongodb.net/");
 
 // Create a task
 taskRouter.post("/", async (req, res) => {
-    const { title, date, description, username } = req.body; // Assuming you pass these fields in the request body
+    const { title, date, description, username } = req.body; 
     try {
         const task = new Task({ title, date, description, username });
         await task.save();
@@ -47,7 +46,7 @@ taskRouter.get("/:id", async (req, res) => {
 // Update a task by ID
 taskRouter.put("/:id", async (req, res) => {
     const { id } = req.params;
-    const updateFields = req.body; // Assuming you pass fields to update in the request body
+    const updateFields = req.body; 
     try {
         const updatedTask = await Task.findByIdAndUpdate(id, updateFields, { new: true });
         if (!updatedTask) {
