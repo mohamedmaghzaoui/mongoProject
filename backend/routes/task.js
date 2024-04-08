@@ -6,6 +6,7 @@ const Task = require("../models/task");
 
 // Create a task
 taskRouter.post("/", async (req, res) => {
+    //get data from req body
     const { title, date, description, username,parentTask } = req.body; 
     try {
         const task = new Task({ title, date, description, username,parentTask });
@@ -30,6 +31,7 @@ taskRouter.get("/", async (req, res) => {
 
 // Read a single task by ID
 taskRouter.get("/:id", async (req, res) => {
+    //get id from req 
     const { id } = req.params;
     try {
         const task = await Task.findById(id);
@@ -76,6 +78,7 @@ taskRouter.delete("/:id", async (req, res) => {
 });
 // Read tasks by username
 taskRouter.get("/username/:username", async (req, res) => {
+    //get username from req
     const { username } = req.params;
     try {
         const tasks = await Task.find({ username: username });
